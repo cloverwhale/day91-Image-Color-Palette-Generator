@@ -1,0 +1,22 @@
+{% include "header.html" %}
+
+<div class="container-fluid">
+
+    <img class="img-small" src="{{ img_url }}">
+    <div class="palette">
+        <table class="palette-table">
+            {% for color in hex_color %}
+            <tr>
+                <td>{{ color }}</td>
+                <td class="color-blocks" style="background-color:{{color}};"></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <hr>
+    <p><a href="{{ url_for('index') }}">Upload another image</a></p>
+</div>
+
+
+{% include "footer.html" %}
