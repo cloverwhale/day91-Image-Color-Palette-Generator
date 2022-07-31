@@ -1,7 +1,7 @@
 import os
 from datetime import datetime as dt
 from PIL import UnidentifiedImageError
-from flask import Flask, render_template, flash, request, redirect, url_for, after_this_request
+from flask import Flask, render_template, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap
 from imagefile import ImageFile
