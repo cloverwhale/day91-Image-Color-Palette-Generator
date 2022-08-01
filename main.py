@@ -14,6 +14,7 @@ logging.getLogger('apscheduler').setLevel(logging.DEBUG)
 
 UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+DEL_FILE_AFTER_MIN = 1
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -61,7 +62,7 @@ def index():
 @app.route("/results/<name>")
 def results(name):
     img_file_path = os.path.join(app.config['UPLOAD_FOLDER'], name)
-    scheduler.add_job(lambda: delete_file(img_file_path), 'interval', minutes=1, id=img_file_path)
+    scheduler.add_job(lambda: delete_file(img_file_path), 'interval', minutes=DEL_FILE_AFTER_MIN, id=img_file_path)
 
     try:
         img = ImageFile(img_file_path)
